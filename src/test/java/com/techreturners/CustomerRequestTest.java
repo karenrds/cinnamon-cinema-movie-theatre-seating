@@ -68,4 +68,27 @@ public class CustomerRequestTest {
     }
 
 
+    @Test
+    public void GivenWhenFourTicketsAreFilledCustomerRequestTwoTickets(){
+        Seat s1 = new Seat("A1",true);
+        Seat s2 = new Seat("A2", true);
+        Seat s3 = new Seat("A3", true);
+        Seat s4 = new Seat("A4", true);
+        Seat s5 = new Seat("A5", false);
+        Seat s6 = new Seat("B1", false);
+
+
+        ArrayList<Seat> seats = new ArrayList<Seat>();
+        seats.add(s1);
+        seats.add(s2);
+        seats.add(s3);
+        seats.add(s4);
+        seats.add(s5);
+        seats.add(s6);
+
+        Customer customer = new Customer();
+        customer.name = "Customer1";
+        String expected = "Customer1 has booked seats - A5 B1 ";
+        assertEquals(expected,customer.allocateTickets(2, seats, 4));
+    }
 }
